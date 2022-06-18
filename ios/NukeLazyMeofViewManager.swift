@@ -6,27 +6,30 @@ class NukeLazyMeofViewManager: RCTViewManager {
   }
 }
 
-class NukeLazyMeofView : UIView {
+import Nuke
+import UIKit
 
-  @objc var color: String = "" {
+class NukeLazyMeofView : UIImageView {
+
+  @objc var uri: String = "" {
     didSet {
-      self.backgroundColor = hexStringToUIColor(hexColor: color)
+        self.clipsToBounds = true
+        Nuke.loadImage(with: uri, into: self)
     }
   }
-
-  func hexStringToUIColor(hexColor: String) -> UIColor {
-    let stringScanner = Scanner(string: hexColor)
-
-    if(hexColor.hasPrefix("#")) {
-      stringScanner.scanLocation = 1
+  
+  @objc var resizeMode: String = "scaleAspectFill" {
+    didSet {
+        switch resizeMode {
+          case "scaleToFill":
+            self.contentMode = .scaleToFill
+          case "scaleAspectFit":
+            self.contentMode = .scaleAspectFit
+          case "scaleAspectFill":
+            self.contentMode = .scaleAspectFill
+          default:
+            self.contentMode = .scaleAspectFill
+        }
     }
-    var color: UInt32 = 0
-    stringScanner.scanHexInt32(&color)
-
-    let r = CGFloat(Int(color >> 16) & 0x000000FF)
-    let g = CGFloat(Int(color >> 8) & 0x000000FF)
-    let b = CGFloat(Int(color) & 0x000000FF)
-
-    return UIColor(red: r / 255.0, green: g / 255.0, blue: b / 255.0, alpha: 1)
   }
 }
