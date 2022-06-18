@@ -16,6 +16,7 @@ export default function App() {
   // topRight = 10
   // bottomLeft = 11
   // bottomRight = 12
+  
   return (
     <View style={styles.container}>
       <NukeLazyMeofView
