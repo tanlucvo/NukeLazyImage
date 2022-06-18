@@ -15,7 +15,11 @@ import { NukeLazyMeofView } from "nuke-lazy-meof";
 
 // ...
 
-<NukeLazyMeofView color="tomato" />
+<NukeLazyMeofView  
+    uri="https://picsum.photos/200/200"
+    style={styles.box}
+    resizeMode="scaleAspectFill"
+/>
 ```
 
 ## Contributing
