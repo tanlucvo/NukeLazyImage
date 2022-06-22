@@ -5,4 +5,9 @@
 RCT_EXPORT_VIEW_PROPERTY(uri, NSString)
 RCT_EXPORT_VIEW_PROPERTY(resizeMode, NSString)
 
++ (BOOL)requiresMainQueueSetup
+{
+    return YES;
+}
+
 @end
