@@ -6,30 +6,39 @@ class NukeLazyMeofViewManager: RCTViewManager {
   }
 }
 
-import Nuke
-import UIKit
+ import Nuke
+ import UIKit
 
-class NukeLazyMeofView : UIImageView {
+ class NukeLazyMeofView : UIImageView {
 
-  @objc var uri: String = "" {
-    didSet {
-        self.clipsToBounds = true
-        Nuke.loadImage(with: uri, into: self)
-    }
-  }
+  @objc
+   static func requiresMainQueueSetup() -> Bool {
+     return true
+   }
+
+   @objc var uri: String = "" {
+     didSet {
+         self.clipsToBounds = true
+         let options = ImageLoadingOptions(
+           placeholder: UIImage(named: "placeholder"),
+           transition: .fadeIn(duration: 0.33)
+         )
+         Nuke.loadImage(with: uri, options: options, into: self)
+     }
+   }
   
-  @objc var resizeMode: String = "scaleAspectFill" {
-    didSet {
-        switch resizeMode {
-          case "scaleToFill":
-            self.contentMode = .scaleToFill
-          case "scaleAspectFit":
-            self.contentMode = .scaleAspectFit
-          case "scaleAspectFill":
-            self.contentMode = .scaleAspectFill
-          default:
-            self.contentMode = .scaleAspectFill
-        }
-    }
-  }
-}
+   @objc var resizeMode: String = "scaleAspectFill" {
+     didSet {
+         switch resizeMode {
+           case "scaleToFill":
+             self.contentMode = .scaleToFill
+           case "scaleAspectFit":
+             self.contentMode = .scaleAspectFit
+           case "scaleAspectFill":
+             self.contentMode = .scaleAspectFill
+           default:
+             self.contentMode = .scaleAspectFill
+         }
+     }
+   }
+ }

@@ -21,7 +21,7 @@ PODS:
   - Gifu (3.3.1)
   - glog (0.3.5)
   - Nuke (10.7.1)
-  - nuke-lazy-meof (0.1.2):
+  - nuke-lazy-meof (0.1.3):
     - Nuke
     - NukeUI
     - React-Core
@@ -359,7 +359,7 @@ SPEC CHECKSUMS:
   Gifu: 416d4e38c4c2fed012f019e0a1d3ffcb58e5b842
   glog: 40a13f7840415b9a77023fbcae0f1e6f43192af3
   Nuke: 279f17a599fd1c83cf51de5e0e1f2db143a287b0
-  nuke-lazy-meof: 02ceac6ee7a3426c84b8c1a9f47dafcf2e82fd1d
+  nuke-lazy-meof: ec7aad20f00d21ad30b2095998ba35a2dd38a101
   NukeUI: 6e99837a8d066c93baa4262692d9ea9ffbc863ba
   RCTRequired: 082f10cd3f905d6c124597fd1c14f6f2655ff65e
   RCTTypeSafety: 8c9c544ecbf20337d069e4ae7fd9a377aadf504b
